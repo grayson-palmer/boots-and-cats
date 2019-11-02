@@ -9,24 +9,88 @@
 /* ********** BODY ********** */
 
 body {
+  background: no-repeat top/80% url('./assets/background.jpg');
   font-family: 'Open Sans';
 }
 
 /* ********** HEADER ********** */
 
 header {
+  background-color: #FFF;
   display: flex;
   flex-flow: row wrap;
+  height: 88px;
   justify-content: flex-start;
 }
 
 .nav-icon {
-  width: 5em;
+  width: 5.5em;
 }
 
 header h1 {
   align-self: center;
+  margin: auto;
   text-transform: uppercase;
   text-align: center;
   width: 92%;
+}
+
+/* ********** MAIN ********** */
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.player-input-screen {
+  background-color: rgba(220, 220, 220, 0.7);
+  padding: 4em;
+}
+
+.player-input-form {
+  display: flex;
+  flex-flow: row wrap;
+  font-family: 'Open Sans';
+  font-size: 1.25em;
+  justify-content: center;
+  margin: auto;
+  padding: 6em;
+  text-transform: uppercase;
+  width: 90%;
+}
+
+.player-1,
+.player-2 {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 50%;
+}
+
+.player-field {
+  border: none;
+  border-radius: 3px;
+  font-size: 1.25em;
+  padding: .5em 0;
+  width: 14.25em;
+}
+
+.player-label {
+  align-self: flex-start;
+  padding-left: 2.75em;
+}
+
+.play-game-button {
+  background-color: #000;
+  border: none;
+  border-radius: 3px;
+  color: #FFF;
+  font-family: 'Open Sans';
+  font-size: 1.25em;
+  text-transform: uppercase;
+  padding: 0.5em;
+  width: 100%;
+  margin: 4em 2.25em;
 }
