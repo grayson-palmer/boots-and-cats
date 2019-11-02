@@ -21,11 +21,12 @@ header {
 }
 
 .nav-icon {
-  width: 3em;
+  width: 5em;
 }
 
 header h1 {
+  align-self: center;
   text-transform: uppercase;
   text-align: center;
-  width: 95%;
+  width: 92%;
 }
