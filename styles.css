@@ -129,6 +129,7 @@ main {
 /* *********** GAME SCREEN ********** */
 
 .game-screen {
+  background-color: rgba(220, 220, 220, 1);
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 33% 33% 33%;
@@ -153,11 +154,11 @@ main {
 .card {
   display: flex;
   flex-flow: row wrap;
-  width: 40%;
+  width: 30%;
 }
 
 .card img {
-  width: 10%;
+  width: 50%;
 }
 
 .player-2-stats {
