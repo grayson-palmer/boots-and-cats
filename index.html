@@ -16,18 +16,22 @@
     </header>
     <main>
       <section class="player-input-screen">
+        <p class="player-1-name-error" hidden>Please enter your name</p>
         <form class="player-input-form">
           <div class="player-1">
-            <input type="text" class="player-field" id="player-1-name">
+            <input type="text" class="player-field" id="player-1-name" maxlength="32">
             <label for="player-1" class="player-label">Player 1</label>
           </div>
           <div class="player-2">
-            <input type="text" class="player-field" id="player-2-name">
+            <input type="text" class="player-field" id="player-2-name" maxlength="32">
             <label for="player-2" class="player-label">Player 2</label>
           </div>
-          <button type="button" class="play-game-button">Play Game</button>
+          <button type="button" class="play-game-button" id="input-play-button">Play Game</button>
         </form>
+      </section>
+      <section class="directions-screen">
       </section>
     </main>
   </body>
+  <script src="./main.js"></script>
 </html>

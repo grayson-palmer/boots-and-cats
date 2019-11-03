@@ -44,8 +44,12 @@ main {
 }
 
 .player-input-screen {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
   background-color: rgba(220, 220, 220, 0.7);
   padding: 4em;
+  width: 100%;
 }
 
 .player-input-form {
@@ -53,33 +57,34 @@ main {
   flex-flow: row wrap;
   font-family: 'Open Sans';
   font-size: 1.25em;
-  justify-content: center;
-  margin: auto;
-  padding: 6em;
+  justify-content: space-around;
+  margin: 4em auto;
+  padding: 2em;
   text-transform: uppercase;
-  width: 90%;
+  width: 70%;
 }
 
 .player-1,
 .player-2 {
-  align-items: center;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  width: 50%;
+  flex-flow: row wrap;
+  justify-self: space-between;
+  width: 40%;
+}
+
+.player-1-name-error {
+  color: #ff0000;
+  font-size: 1.5em;
+  justify-self: center;
+  padding: .5em;
 }
 
 .player-field {
   border: none;
   border-radius: 3px;
   font-size: 1.25em;
-  padding: .5em 0;
-  width: 14.25em;
-}
-
-.player-label {
-  align-self: flex-start;
-  padding-left: 2.75em;
+  padding: .5em .5em;
+  width: 100%;
 }
 
 .play-game-button {
@@ -91,6 +96,32 @@ main {
   font-size: 1.25em;
   text-transform: uppercase;
   padding: 0.5em;
-  width: 100%;
-  margin: 4em 2.25em;
+  width: 90%;
+  margin: 4em 0;
+}
+
+/* *********** DIRECTIONS SCREEN ********** */
+
+.directions-screen {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: rgba(220, 220, 220, 0.7);
+}
+
+.directions-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 55%;
+}
+
+.directions-container > h2,
+.directions-container > p {
+  padding: 1em 0;
+  font-size: 1.5em;
+}
+
+.hide {
+  display: none;
 }
