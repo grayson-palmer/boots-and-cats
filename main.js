@@ -67,9 +67,15 @@ function flipCard(event) {
 function player1StatInsert(event) {
   console.log(event);
   event.path[3].children[2].children['0'].insertAdjacentHTML('beforeend',
-  `<h3>Player 1</h3>
-  <p>Top Player #</p>
-  <p>Matches this round</p>
-  <p>5</p>
-  <p>Game Wins</p>`);
+  `<div class="player-1-display">
+    <h3>${player1Name.value}</h3>
+    <p hidden>Top Player #</p>
+  </div>
+  <div class="matches-this-round">
+    <p>Matches this round</p>
+    <p class="number-rounds">5</p>
+  </div>
+  <div>
+  <p>Game Wins</p>
+  </div>`);
 }
