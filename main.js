@@ -6,7 +6,9 @@ playerInputScreen.addEventListener('click', inputClickHandler);
 
 function inputClickHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
-    inputNotBlank();
+    if (inputNotBlank()) {
+      playerInputScreen.classList.toggle('hide');
+    }
   }
   
 }
@@ -16,6 +18,7 @@ function inputNotBlank() {
     return true;
   } else {
     player1NameError.removeAttribute('hidden');
+    return false;
   }
 }
 
