@@ -44,6 +44,9 @@ main {
 }
 
 .player-input-screen {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
   background-color: rgba(220, 220, 220, 0.7);
   padding: 4em;
 }
@@ -54,8 +57,8 @@ main {
   font-family: 'Open Sans';
   font-size: 1.25em;
   justify-content: center;
-  margin: auto;
-  padding: 6em;
+  margin: 4em auto;
+  padding: 2em;
   text-transform: uppercase;
   width: 90%;
 }
@@ -69,6 +72,13 @@ main {
   width: 50%;
 }
 
+.player-1-name-error {
+  color: #ff0000;
+  font-size: 1.5em;
+  justify-self: center;
+  padding: .5em;
+}
+
 .player-field {
   border: none;
   border-radius: 3px;
@@ -79,7 +89,7 @@ main {
 
 .player-label {
   align-self: flex-start;
-  padding-left: 2.75em;
+  padding-left: 4.75em;
 }
 
 .play-game-button {
@@ -91,6 +101,6 @@ main {
   font-size: 1.25em;
   text-transform: uppercase;
   padding: 0.5em;
-  width: 100%;
+  width: 82%;
   margin: 4em 2.25em;
 }
