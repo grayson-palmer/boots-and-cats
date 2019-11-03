@@ -2,8 +2,10 @@ var directionsScreen = document.querySelector('.directions-screen');
 var playerInputScreen = document.querySelector('.player-input-screen');
 var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
+var gameScreen = document.querySelector('.game-screen');
 
 playerInputScreen.addEventListener('click', inputClickHandler);
+gameScreen.addEventListener('click', gameHandler);
 
 function inputClickHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
@@ -12,7 +14,6 @@ function inputClickHandler(event) {
       directionsInfo();
     }
   }
-  
 }
 
 function inputNotBlank() {
@@ -33,4 +34,8 @@ function directionsInfo() {
   <p>After you play, you’ll see the name of the final winner and how long it took to win the game.</p>
   <button type="button" class="play-game-button" id="directions-play-button">Play Game</button>
 </div>`)
+}
+
+function gameHandler(event) {
+
 }
