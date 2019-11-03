@@ -47,6 +47,7 @@ main {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  height: 100vh;
   background-color: rgba(220, 220, 220, 0.7);
   padding: 4em;
   width: 100%;
@@ -105,6 +106,7 @@ main {
 .directions-screen {
   display: flex;
   flex-flow: column nowrap;
+  height: 100vh;
   align-items: center;
   background-color: rgba(220, 220, 220, 0.7);
 }
@@ -122,10 +124,6 @@ main {
   font-size: 1.5em;
 }
 
-.hide {
-  display: none;
-}
-
 /* *********** GAME SCREEN ********** */
 
 .game-screen {
@@ -135,36 +133,59 @@ main {
   grid-template-rows: 33% 33% 33%;
 }
 
-.player-1-stats {
+.player-1-stats,
+.player-2-stats {
   align-items: center;
+  background-color: #000;
+  color: #FFF;
   display: flex;
   flex-flow: column nowrap;
+  height: 100vh;
+}
+
+.player-1-stats {
   grid-column: 1 / span 1;
   grid-row: 1 / span 3;
 }
 
+.player-2-stats {
+  grid-column: 3 / span 3;
+  grid-row: 1 / span 3;
+}
+
 .card-board {
+  border: 2px solid green;
   display: flex;
   flex-wrap: wrap;
   grid-column: 2 / span 2;
   grid-row: 1 / span 3;
+  height: 100vh;
   margin: auto;
 }
 
 .card {
+  border: 2px solid yellow;
   display: flex;
   flex-flow: row wrap;
+  position: relative;
   width: 30%;
+}
+
+.card-front,
+.card-back {
+  border: 2px solid red;
+  position: absolute;
+}
+
+.flip-card {
+  transform: rotateY(180deg);
 }
 
 .card img {
   width: 50%;
 }
 
-.player-2-stats {
-  align-items: center;
-  display: flex;
-  flex-flow: column nowrap;
-  grid-column: 3 / span 3;
-  grid-row: 1 / span 3;
+
+.hide {
+  display: none;
 }
