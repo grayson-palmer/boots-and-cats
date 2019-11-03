@@ -3,6 +3,8 @@ var playerInputScreen = document.querySelector('.player-input-screen');
 var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var gameScreen = document.querySelector('.game-screen');
+var deck = [];
+var counter = 0;
 
 playerInputScreen.addEventListener('click', inputClickHandler);
 gameScreen.addEventListener('click', gameHandler);
@@ -37,5 +39,12 @@ function directionsInfo() {
 }
 
 function gameHandler(event) {
+  if (event.path[1].classList.contains('card')){
+    flipCard(event);
+  }
+}
 
+function flipCard(event) {
+  event.path[1].classList.toggle('flip-card');
+  // console.log(event);
 }
