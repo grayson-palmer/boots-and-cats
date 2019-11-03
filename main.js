@@ -1,4 +1,5 @@
 var playerInputScreen = document.querySelector('.player-input-screen');
+var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 
 playerInputScreen.addEventListener('click', inputClickHandler);
@@ -12,9 +13,9 @@ function inputClickHandler(event) {
 
 function inputNotBlank() {
   if (player1Name.value) {
-    console.log('true');
+    return true;
   } else {
-    console.log('false');
+    player1NameError.removeAttribute('hidden');
   }
 }
 
