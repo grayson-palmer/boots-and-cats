@@ -43,6 +43,8 @@ main {
   justify-content: center;
 }
 
+/* ********** PLAYER INPUT SCREEN ********** */
+
 .player-input-screen {
   display: flex;
   flex-flow: column nowrap;
