@@ -154,28 +154,40 @@ main {
 }
 
 .card-board {
-  border: 2px solid green;
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
-  margin: auto;
+  margin: 5vh 0px;
+  perspective: 1000px;
   width: 100%;
 }
 
 .card {
-  border: 2px solid yellow;
+  align-items: center;
+  /* border: 2px solid yellow; */
   display: flex;
   flex-flow: row wrap;
+  height: 240px;
   justify-content: center;
-  align-items: center;
+  margin: 20px;
   position: relative;
-  width: 20%;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  width: calc(18% - 20px);
 }
 
 .card-front,
 .card-back {
-  border: 2px solid red;
+  border: 1px solid black;
+  border-radius: 15px;
   position: absolute;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  height: 240px;
+  width: 100%;  
+  transform: rotateY(180deg);
 }
 
 .flip-card {
@@ -183,9 +195,11 @@ main {
 }
 
 .card img {
-  width: 70%;
+  width: 100%;
+  z-index: 0;
 }
 
+/* ********** HIDE CLASS ********** */
 
 .hide {
   display: none;
