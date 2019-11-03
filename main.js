@@ -1,18 +1,20 @@
-var directionsScreen = document.querySelector('.directions-screen');
 var playerInputScreen = document.querySelector('.player-input-screen');
 var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
+var directionsScreen = document.querySelector('.directions-screen');
 var gameScreen = document.querySelector('.game-screen');
 var deck = [];
 var counter = 0;
 
-playerInputScreen.addEventListener('click', inputClickHandler);
+playerInputScreen.addEventListener('click', inputHandler);
+directionsScreen.addEventListener('click', directionsHandler)
 gameScreen.addEventListener('click', gameHandler);
 
-function inputClickHandler(event) {
+function inputHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
     if (inputNotBlank()) {
       playerInputScreen.classList.toggle('hide');
+      directionsScreen.classList.toggle('hide');
       directionsInfo();
     }
   }
@@ -37,6 +39,14 @@ function directionsInfo() {
   <button type="button" class="play-game-button" id="directions-play-button">Play Game</button>
 </div>`)
 }
+
+function directionsHandler(event) {
+  if (event.target.classList.contains('play-game-button')) {
+    directionsScreen.classList.toggle('hide');
+    gameScreen.classList.toggle('hide');
+  }
+}
+
 
 function gameHandler(event) {
   if (event.path[1].classList.contains('card')){

@@ -104,17 +104,17 @@ main {
 /* *********** DIRECTIONS SCREEN ********** */
 
 .directions-screen {
+  align-items: center;
+  background-color: rgba(220, 220, 220, 0.7);
   display: flex;
   flex-flow: column nowrap;
   height: 100vh;
-  align-items: center;
-  background-color: rgba(220, 220, 220, 0.7);
 }
 
 .directions-container {
+  align-items: center;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
   width: 55%;
 }
 
@@ -122,6 +122,10 @@ main {
 .directions-container > p {
   padding: 1em 0;
   font-size: 1.5em;
+}
+
+.directions-container .play-game-button {
+  margin: 2em 0;
 }
 
 /* *********** GAME SCREEN ********** */
@@ -156,8 +160,8 @@ main {
 .card-board {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
-  margin: 5vh 0px;
+  height: calc(100vh - 40px);
+  padding-top: 40px;
   perspective: 1000px;
   width: 100%;
 }
