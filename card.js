@@ -6,7 +6,6 @@ class Card {
     this.matched = false;
   }
   match() {
-    
+
   }
 }
-var counter = 0;
