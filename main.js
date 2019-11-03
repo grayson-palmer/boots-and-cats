@@ -10,6 +10,8 @@ playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler)
 gameScreen.addEventListener('click', gameHandler);
 
+// ********** INPUT SCREEN HANDLER AND FUNCTIONS ********** //
+
 function inputHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
     if (inputNotBlank()) {
@@ -29,6 +31,8 @@ function inputNotBlank() {
   }
 }
 
+// ********** DIRECTION SCREEN HANDLER AND FUNCTIONS ********** //
+
 function directionsInfo() {
   directionsScreen.insertAdjacentHTML('beforeend', 
 `<div class="directions-container">
@@ -44,9 +48,11 @@ function directionsHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
     directionsScreen.classList.toggle('hide');
     gameScreen.classList.toggle('hide');
+    player1StatInsert(event);
   }
 }
 
+// ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
 function gameHandler(event) {
   if (event.path[1].classList.contains('card')){
@@ -56,5 +62,14 @@ function gameHandler(event) {
 
 function flipCard(event) {
   event.path[1].classList.toggle('flip-card');
-  // console.log(event);
+}
+
+function player1StatInsert(event) {
+  console.log(event);
+  event.path[3].children[2].children['0'].insertAdjacentHTML('beforeend',
+  `<h3>Player 1</h3>
+  <p>Top Player #</p>
+  <p>Matches this round</p>
+  <p>5</p>
+  <p>Game Wins</p>`);
 }
