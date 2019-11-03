@@ -11,6 +11,7 @@
 body {
   background: no-repeat top/80% url('./assets/background.jpg');
   font-family: 'Open Sans';
+  text-transform: uppercase;
 }
 
 /* ********** HEADER ********** */
@@ -30,7 +31,6 @@ header {
 header h1 {
   align-self: center;
   margin: auto;
-  text-transform: uppercase;
   text-align: center;
   width: 92%;
 }
@@ -63,7 +63,6 @@ main {
   justify-content: space-around;
   margin: 4em auto;
   padding: 2em;
-  text-transform: uppercase;
   width: 70%;
 }
 
@@ -126,6 +125,10 @@ main {
   font-size: 1.5em;
 }
 
+.directions-container > p {
+  text-transform: none;
+}
+
 .directions-container .play-game-button {
   margin: 2em 0;
 }
@@ -157,6 +160,33 @@ main {
 .player-2-stats {
   grid-column: 3 / span 3;
   grid-row: 1 / span 3;
+}
+
+.player-1-stats *,
+.player-2-stats * {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin: 0.25em;
+  padding: 0.5em;
+  text-align: center;
+  width: 80%;
+}
+
+.player-1-display,
+.player-2-display {
+  border-bottom: 2px solid #FFF;
+}
+
+.matches-this-round {
+  border-bottom: 2px solid #FFF;
+}
+
+.number-rounds {
+  font-size: 5em;
+  font-weight: 800;
+  padding: 0;
+  margin: 0;
 }
 
 .card-board {
