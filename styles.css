@@ -13,6 +13,10 @@ body {
   font-family: 'Open Sans';
 }
 
+.background-color {
+  background: rgba(220, 220, 220, 1);
+}
+
 /* ********** HEADER ********** */
 
 header {
@@ -138,7 +142,7 @@ main {
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 33% 34% 33%;
-  margin: 15px;
+  margin: 15px 15px 0px;
 }
 
 .player-1-stats,
@@ -148,7 +152,7 @@ main {
   color: #FFF;
   display: flex;
   flex-flow: column nowrap;
-  height: calc(100vh - 118px);
+  height: calc(100vh - 88px);
 }
 
 .player-1-stats {
@@ -173,7 +177,6 @@ main {
 }
 
 .card {
-  border: 2px solid yellow;
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -219,13 +222,13 @@ main {
 .card6 {
   grid-column: 5;
   grid-row: 2;
-  transform: rotate(-10deg);
+  transform: rotate(15deg);
 }
 
 .card7 {
   grid-column: 7;
   grid-row: 2;
-  transform: rotate(16deg);
+  transform: rotate(-8deg);
 }
 
 .card8 {
@@ -246,12 +249,6 @@ main {
   transform: rotate(7deg);
 }
 
-.card img {
-  object-fit: cover;
-  width: 100%;
-  z-index: 0;
-}
-
 .card-front,
 .card-back {
   border: 1px solid black;
@@ -264,6 +261,13 @@ main {
   height: 200px;
   width: 100%;  
   transform: rotateY(180deg);
+}
+
+.card img {
+  background: #FFF;
+  object-fit: scale-down;
+  width: 100%;
+  z-index: 0;
 }
 
 .flip-card {
