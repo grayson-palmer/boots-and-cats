@@ -5,8 +5,9 @@ class Card {
     this.matched = false;
     this.hasFlipped = false;
   }
-  hasFlipped() {
+  flipCard() {
     this.hasFlipped = !this.hasFlipped;
+    deck.selectedCards.push(this);
   }
   matched() {
     this.matched = true;
