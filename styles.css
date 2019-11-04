@@ -148,6 +148,8 @@ main {
   margin: 15px 15px 0px;
 }
 
+/* ********** ASIDES ********** */
+
 .player-1-stats,
 .player-2-stats {
   align-items: center;
@@ -195,10 +197,12 @@ main {
   margin: 0;
 }
 
+/* ********** GAME SCREEN ********** */
+
 .card-board {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 33% 34% 33%;
+  grid-template-rows: 1fr 1fr 1fr;
   flex-wrap: wrap;
   height: calc(100vh - 138px);
   padding: 25px 30px 5px;
@@ -279,7 +283,7 @@ main {
   transform: rotate(7deg);
 }
 
-.card-front,
+.card-face,
 .card-back {
   border: 1px solid black;
   border-radius: 15px;
@@ -287,7 +291,7 @@ main {
   backface-visibility: hidden;
 }
 
-.card-front {
+.card-face {
   height: 200px;
   width: 100%;  
   transform: rotateY(180deg);
