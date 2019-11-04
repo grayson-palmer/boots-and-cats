@@ -48,6 +48,7 @@ function directionsHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
     directionsScreen.classList.toggle('hide');
     gameScreen.classList.toggle('hide');
+    event.path[4].classList.toggle('background-color');
     player1StatInsert(event);
   }
 }
@@ -65,7 +66,6 @@ function flipCard(event) {
 }
 
 function player1StatInsert(event) {
-  console.log(event);
   event.path[3].children[2].children['0'].insertAdjacentHTML('beforeend',
   `<div class="player-1-display">
     <h3>${player1Name.value}</h3>
