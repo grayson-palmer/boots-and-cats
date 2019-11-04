@@ -3,7 +3,6 @@ var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
 var gameScreen = document.querySelector('.game-screen');
-var cards = [];
 var deck = null;
 
 playerInputScreen.addEventListener('click', inputHandler);
@@ -65,9 +64,7 @@ function gameHandler(event) {
 function flipCard(event) {
   event.path[1].classList.toggle('flip-card');
   var num = event.path[1].id - 1
-  console.log(cards[num].hasFlipped());
-  // cards[num].hasFlipped();
-  // console.log(deck.cards[event.path[1].id - 1]);
+  deck.cards[num].flipCard();
 }
 
 function player1StatInsert(event) {
@@ -90,12 +87,13 @@ function insertCards(event) {
   for (var i = 0; i < 10; i++)
   event.path[3].children[2].children['1'].insertAdjacentHTML('beforeend',
   `<div class="card card${i + 1}" id="${i + 1}" data-name="${deck.cards[i].name}">
-    <img class="card-front" src=${deck.cards[i].image} alt="2 black boots">
+    <img class="card-face" src=${deck.cards[i].image} alt="2 black boots">
     <img class="card-back" src="./assets/card-back.svg" alt="card back">
   </div>`)
 }
 
 function populateDeck() {
+  var cards = [];
   var name = ['boot-1', 'boot-2', 'boot-3', 'cat-1', 'cat-2'];
   var image = ['./assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg'];
   for (var i = 0; i < 5; i++) {
