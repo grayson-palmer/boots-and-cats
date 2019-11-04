@@ -1,11 +1,14 @@
 class Card {
   constructor(name, image) {
-    this.id = ++counter;
     this.name = name;
     this.image = image;
     this.matched = false;
+    this.hasFlipped = false;
   }
-  match() {
-
+  hasFlipped() {
+    this.hasFlipped = !this.hasFlipped;
+  }
+  matched() {
+    this.matched = true;
   }
 }
