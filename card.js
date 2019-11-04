@@ -3,6 +3,12 @@ class Card {
     this.name = name;
     this.image = image;
     this.matched = false;
-    this.hasFlippled = false;
+    this.hasFlipped = false;
+  }
+  hasFlipped() {
+    this.hasFlipped = !this.hasFlipped;
+  }
+  matched() {
+    this.matched = true;
   }
 }
