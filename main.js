@@ -47,7 +47,7 @@ function directionsHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
     directionsScreen.classList.toggle('hide');
     gameScreen.classList.toggle('hide');
-    event.path[4].classList.toggle('background-color');
+    event.target.parentElement.parentElement.parentElement.parentElement.classList.toggle('background-color');
     player1StatInsert(event);
     insertCards(event);
   }
@@ -56,19 +56,35 @@ function directionsHandler(event) {
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
 function gameHandler(event) {
-  if (event.path[1].classList.contains('card')){
+  console.log(event);
+  if (event.target.parentElement.classList.contains('card')){
     flipCard(event);
+  }
+  if (deck.selectedCards.length > 1) {
+    deck.checkSelectedCards();
+    setTimeout(flipCardsBack, 1500);
+    // console.log(deck.selectedCards[0]);
+    
   }
 }
 
 function flipCard(event) {
-  event.path[1].classList.toggle('flip-card');
-  var num = event.path[1].id - 1
-  deck.cards[num].flipCard();
+  var num = event.target.parentElement.id - 1
+  deck.cards[num].changeHasFlipped(event);
+}
+
+function flipCardsBack() {
+  debugger;
+  console.log(deck.selectedCards);
+  var card1 = document.querySelector(`.card${deck.selectedCards[0].cardNum}`);
+  var card2 = document.querySelector(`.card${deck.selectedCards[1].cardNum}`);
+  card1.classList.toggle('flip-card');
+  card2.classList.toggle('flip-card');
+  this.selectedCards = [];
 }
 
 function player1StatInsert(event) {
-  event.path[3].children[2].children['0'].insertAdjacentHTML('beforeend',
+  event.target.parentElement.parentElement.parentElement.children[2].children['0'].insertAdjacentHTML('beforeend',
   `<div class="player-1-display">
     <h3>${player1Name.value}</h3>
     <p hidden>Top Player #</p>
@@ -84,21 +100,21 @@ function player1StatInsert(event) {
 
 function insertCards(event) {
   deck = new Deck(populateDeck());
-  for (var i = 0; i < 10; i++)
-  event.path[3].children[2].children['1'].insertAdjacentHTML('beforeend',
-  `<div class="card card${i + 1}" id="${i + 1}" data-name="${deck.cards[i].name}">
-    <img class="card-face" src=${deck.cards[i].image} alt="2 black boots">
-    <img class="card-back" src="./assets/card-back.svg" alt="card back">
-  </div>`)
+  for (var i = 0; i < 10; i++) {
+    event.target.parentElement.parentElement.parentElement.children[2].children['1'].insertAdjacentHTML('beforeend',
+    `<div class="card card${deck.cards[i].cardNum}" id="${deck.cards[i].cardNum}" data-name="${deck.cards[i].name}">
+      <img class="card-face" src=${deck.cards[i].image} alt="2 black boots">
+      <img class="card-back" src="./assets/card-back.svg" alt="card back">
+    </div>`)
+  }
 }
 
 function populateDeck() {
   var cards = [];
-  var name = ['boot-1', 'boot-2', 'boot-3', 'cat-1', 'cat-2'];
   var image = ['./assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg'];
   for (var i = 0; i < 5; i++) {
-    cards.push(new Card(name[i], image[i]));
-    cards.push(new Card(name[i], image[i]));
+    cards.push(new Card(image[i], (i + 1)));
+    cards.push(new Card(image[i], (i + 6)));
   }
   return cards;
 }
