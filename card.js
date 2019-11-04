@@ -5,7 +5,7 @@ class Card {
     this.matched = false;
     this.hasFlipped = false;
   }
-  flipCard() {
+  changeHasFlipped() {
     this.hasFlipped = !this.hasFlipped;
     deck.selectedCards.push(this);
   }
