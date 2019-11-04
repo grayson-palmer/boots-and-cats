@@ -9,9 +9,13 @@
 /* ********** BODY ********** */
 
 body {
-  background: no-repeat top/80% url('./assets/background.jpg');
+  background: no-repeat center/100% url('./assets/background.jpg');
   font-family: 'Open Sans';
   text-transform: uppercase;
+}
+
+.background-color {
+  background: rgba(220, 220, 220, 1);
 }
 
 /* ********** HEADER ********** */
@@ -49,7 +53,7 @@ main {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 88px);
   background-color: rgba(220, 220, 220, 0.7);
   padding: 4em;
   width: 100%;
@@ -94,6 +98,7 @@ main {
   border: none;
   border-radius: 3px;
   color: #FFF;
+  cursor: pointer;
   font-family: 'Open Sans';
   font-size: 1.25em;
   text-transform: uppercase;
@@ -109,7 +114,7 @@ main {
   background-color: rgba(220, 220, 220, 0.7);
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
+  height: calc(100vh - 88px);
 }
 
 .directions-container {
@@ -139,7 +144,8 @@ main {
   background-color: rgba(220, 220, 220, 1);
   display: grid;
   grid-template-columns: 15% 70% 15%;
-  grid-template-rows: 33% 33% 33%;
+  grid-template-rows: 33% 34% 33%;
+  margin: 15px 15px 0px;
 }
 
 .player-1-stats,
@@ -149,7 +155,7 @@ main {
   color: #FFF;
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
+  height: calc(100vh - 88px);
 }
 
 .player-1-stats {
@@ -190,26 +196,87 @@ main {
 }
 
 .card-board {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 33% 34% 33%;
   flex-wrap: wrap;
-  height: calc(100vh - 40px);
-  padding-top: 40px;
+  height: calc(100vh - 138px);
+  padding: 25px 30px 5px;
   perspective: 1000px;
   width: 100%;
 }
 
 .card {
   align-items: center;
-  /* border: 2px solid yellow; */
+  cursor: pointer;
   display: flex;
   flex-flow: row wrap;
-  height: 240px;
+  height: 200px;
   justify-content: center;
-  margin: 20px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform .5s;
-  width: calc(18% - 20px);
+  width: 100%;
+}
+
+.card1 {
+  grid-column: 2;
+  grid-row: 1;
+  transform: rotate(-10deg);
+}
+
+.card2 {
+  grid-column: 4;
+  grid-row: 1;
+  transform: rotate(5deg);
+}
+
+.card3 {
+  grid-column: 6;
+  grid-row: 1;
+  transform: rotate(-13deg);
+}
+
+.card4 {
+  grid-column: 1;
+  grid-row: 2;
+  transform: rotate(-8deg);
+}
+
+.card5 {
+  grid-column: 3;
+  grid-row: 2;
+  transform: rotate(7deg);
+}
+
+.card6 {
+  grid-column: 5;
+  grid-row: 2;
+  transform: rotate(15deg);
+}
+
+.card7 {
+  grid-column: 7;
+  grid-row: 2;
+  transform: rotate(-8deg);
+}
+
+.card8 {
+  grid-column: 2;
+  grid-row: 3;
+  transform: rotate(8deg);
+}
+
+.card9 {
+  grid-column: 4;
+  grid-row: 3;
+  transform: rotate(-11deg);
+}
+
+.card10 {
+  grid-column: 6;
+  grid-row: 3;
+  transform: rotate(7deg);
 }
 
 .card-front,
@@ -221,18 +288,20 @@ main {
 }
 
 .card-front {
-  height: 240px;
+  height: 200px;
   width: 100%;  
   transform: rotateY(180deg);
 }
 
-.flip-card {
-  transform: rotateY(180deg);
-}
-
 .card img {
+  background: #FFF;
+  object-fit: scale-down;
   width: 100%;
   z-index: 0;
+}
+
+.flip-card {
+  transform: rotateY(180deg);
 }
 
 /* ********** HIDE CLASS ********** */
