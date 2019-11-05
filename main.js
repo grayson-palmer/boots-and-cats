@@ -8,6 +8,7 @@ var deck = null;
 var firstCard = null;
 var secondCard = null;
 var flippedCard = false;
+var timer = 0;
 
 playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler);
@@ -70,6 +71,7 @@ function directionsHandler(event) {
 // }
 
 function flipCard() {
+  timerHandler();
   this.classList.toggle('flip-card');
   deck.cards[this.id - 1].changeHasFlipped();
   if (!flippedCard) {
@@ -156,7 +158,25 @@ function congratulationScreen() {
     <div class="game-complete">
     <p>You did it!</p>
     <p>Great Job ${player1Name.value}!</p>
+    <p>Time: ${timeDisplay()}</p>
     </div>
     `, 1500)
   }
+}
+
+function timerIncrement() {
+  timer++
+  if (deck.matchedCards.length / 2 >= 5){
+    clearInterval(interval)
+  }
+}
+
+function timerHandler() {
+  var interval = setInterval(timerIncrement, 1000);
+}
+
+function timeDisplay() {
+  var min = Math.floor(timer / 60);
+  var sec = timer % 60;
+  return `${min}:${sec}`;
 }
