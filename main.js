@@ -162,7 +162,7 @@ function congratulationScreen() {
     `
     <div class="game-complete">
     <p>You did it!</p>
-    <p>Great Job ${player1Name.value}!</p>
+    <p>Great Job ${playerName.name}!</p>
     <p>Time: ${timeDisplay()}</p>
     </div>
     `);
