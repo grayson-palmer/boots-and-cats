@@ -7,7 +7,6 @@ class Card {
   }
   changeHasFlipped() {
     this.hasFlipped = !this.hasFlipped;
-    deck.selectedCards.push(this);
   }
   matched() {
     this.matched = true;
