@@ -92,6 +92,8 @@ function unflipCards() {
     firstCard.classList.remove('flip-card');
     secondCard.classList.remove('flip-card');
   }, 1000);
+  deck.cards[firstCard.id - 1].changeHasFlipped();
+  deck.cards[secondCard.id - 1].changeHasFlipped();
 }
 
 // function removeAnimation() {
@@ -106,6 +108,8 @@ function removeCards() {
     firstCard.remove();
     secondCard.remove();
   }, 1200);
+  // deck.cards[firstCard.id - 1].matched();
+  // deck.cards[secondCard.id - 1].matched();
 }
 
 function player1StatInsert(event) {
@@ -126,17 +130,18 @@ function player1StatInsert(event) {
 function updateMatchCount() {
   var numberMatches = document.querySelector('.number-matches');
   numberMatches.innerHTML = deck.matchedCards.length / 2;
-  console.log(numberMatches);
 }
 
 function insertCards(event) {
   deck = new Deck(populateDeck());
+  // console.log('after deck', deck.cards);
+  // deck.shuffle();
   for (var i = 0; i < 10; i++) {
     event.target.parentElement.parentElement.parentElement.children[2].children['1'].insertAdjacentHTML('beforeend',
-    `<div class="card card${deck.cards[i].cardNum}" id="${deck.cards[i].cardNum}">
-      <img class="card-face" src=${deck.cards[i].image}>
+    `<div class="card card${i + 1}" id="${deck.cards[i].cardNum}">
+    <img class="card-face" src=${deck.cards[i].image}>
       <img class="card-back" src="./assets/card-back.svg" alt="card back">
-    </div>`)
+      </div>`)
   }
   allCards = gameScreen.querySelectorAll('.card');
   allCards.forEach(card => card.addEventListener('click', flipCard));
@@ -160,7 +165,7 @@ function congratulationScreen() {
     <p>Great Job ${player1Name.value}!</p>
     <p>Time: ${timeDisplay()}</p>
     </div>
-    `, 1500)
+    `);
   }
 }
 

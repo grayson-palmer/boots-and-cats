@@ -7,10 +7,14 @@ class Deck {
   }
   
   shuffle() {
-
+    var orig = this.cards
+    console.log('PreShuf', orig);
+    var shuf = this.cards.sort(function() { return 0.5 - Math.random() });
+    console.log('PostShuf', shuf);
   }
   
   checkSelectedCards() {
+    console.log(this.selectedCards);
     if (this.selectedCards[0].image === this.selectedCards[1].image) {
       this.moveToMatched();
       removeCards();
