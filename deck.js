@@ -3,7 +3,7 @@ class Deck {
     this.cards = cards;
     this.matchedCards = [];
     this.selectedCards = [];
-    this.matches = [];
+    // this.matches = [];
   }
   
   shuffle() {
@@ -12,14 +12,18 @@ class Deck {
   
   checkSelectedCards() {
     if (this.selectedCards[0].image === this.selectedCards[1].image) {
-      this.matchedCards.push(this.selectedCards[0], this.selectedCards[1]);
+      this.moveToMatched();
+      removeCards();
+      congratulationScreen();
       this.selectedCards = [];
     } else {
       unflipCards();
+      this.selectedCards = [];
     }
   }
-
+  
   moveToMatched() {
-
+    this.matchedCards.push(this.selectedCards[0], this.selectedCards[1]);
+    updateMatchCount();
   }
 }

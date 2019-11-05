@@ -60,14 +60,12 @@ function directionsHandler(event) {
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
 // function gameHandler(event) {
-//   if (deck.selectedCards.length > 1) {
-//     if (deck.checkSelectedCards()) {
-//       //Make cards disappear
-//       console.log(event.target.parentElement)
-//       console.log(event);
-//     }
-//     setTimeout(flipCardsBack, 1500);
-    
+//   if (deck.matchedCards.length === 5) {
+//     console.log('made it')
+//     // gameScreen.childNode[1].insertAdjacentHTML('beforeend',
+//     // `
+//     // <p class="game-complete">YOU MADE IT</p>
+//     // `)
 //   }
 // }
 
@@ -82,7 +80,6 @@ function flipCard() {
   } else {
     flippedCard = false;
     secondCard = this;
-    deck.selectedCards.push(this); 
     deck.selectedCards.push(deck.cards[secondCard.id - 1]);
   }
   deck.checkSelectedCards();
@@ -90,9 +87,23 @@ function flipCard() {
 
 function unflipCards() {
   setTimeout(function() {
-      firstCard.classList.remove('flip-card');
-      secondCard.classList.remove('flip-card');
-    }, 1500);
+    firstCard.classList.remove('flip-card');
+    secondCard.classList.remove('flip-card');
+  }, 1000);
+}
+
+// function removeAnimation() {
+//   setTimeout(function() {
+//     firstCard.classList.add('remove-card');
+//     secondCard.classList.add('remove-card');
+//   }, 1000);
+// }
+
+function removeCards() {
+  setTimeout(function() {
+    firstCard.remove();
+    secondCard.remove();
+  }, 1200);
 }
 
 function player1StatInsert(event) {
@@ -103,11 +114,17 @@ function player1StatInsert(event) {
   </div>
   <div class="matches-this-round">
     <p>Matches this round</p>
-    <p class="number-rounds">5</p>
+    <p class="number-matches">0</p>
   </div>
   <div>
   <p>Game Wins</p>
   </div>`);
+}
+
+function updateMatchCount() {
+  var numberMatches = document.querySelector('.number-matches');
+  numberMatches.innerHTML = deck.matchedCards.length / 2;
+  console.log(numberMatches);
 }
 
 function insertCards(event) {
@@ -126,8 +143,19 @@ function insertCards(event) {
 function populateDeck() {
   var cards = [];
   var image = ['./assets/boot-1.jpg', './assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg', './assets/cat-2.jpg'];
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < image.length; i++) {
     cards.push(new Card(image[i], (i + 1)));
   }
   return cards;
+}
+
+function congratulationScreen() {
+  if (deck.matchedCards.length / 2 >= 5) {
+    gameScreen.children[1].insertAdjacentHTML('beforeend',
+    `
+    <div class="game-complete">
+    <p>Congratulations!</p>
+    </div>
+    `, 1500)
+  }
 }
