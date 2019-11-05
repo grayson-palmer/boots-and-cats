@@ -1,10 +1,10 @@
 class Player {
   constructor(name) {
     this.name = name;
-    this.matchCount = 0;
-    this.matches = [];
+    this.roundCount = 0;
+    this.rounds = [];
   }
-  addMatchCount() {
-    this.matchCount++;
+  addRoundCount() {
+    this.RoundCount++;
   }
 }
