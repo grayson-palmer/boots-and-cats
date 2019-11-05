@@ -60,14 +60,12 @@ function directionsHandler(event) {
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
 // function gameHandler(event) {
-//   if (deck.selectedCards.length > 1) {
-//     if (deck.checkSelectedCards()) {
-//       //Make cards disappear
-//       console.log(event.target.parentElement)
-//       console.log(event);
-//     }
-//     setTimeout(flipCardsBack, 1500);
-    
+//   if (deck.matchedCards.length === 5) {
+//     console.log('made it')
+//     // gameScreen.childNode[1].insertAdjacentHTML('beforeend',
+//     // `
+//     // <p class="game-complete">YOU MADE IT</p>
+//     // `)
 //   }
 // }
 
@@ -89,16 +87,23 @@ function flipCard() {
 
 function unflipCards() {
   setTimeout(function() {
-      firstCard.classList.remove('flip-card');
-      secondCard.classList.remove('flip-card');
-    }, 1000);
+    firstCard.classList.remove('flip-card');
+    secondCard.classList.remove('flip-card');
+  }, 1000);
 }
 
+// function removeAnimation() {
+//   setTimeout(function() {
+//     firstCard.classList.add('remove-card');
+//     secondCard.classList.add('remove-card');
+//   }, 1000);
+// }
+
 function removeCards() {
-  firstCard.classList.add(remove-card);
-  secondCard.classList.add(remove-card);
-  firstCard.remove();
-  secondCard.remove();
+  setTimeout(function() {
+    firstCard.remove();
+    secondCard.remove();
+  }, 1200);
 }
 
 function player1StatInsert(event) {
@@ -119,6 +124,7 @@ function player1StatInsert(event) {
 function updateMatchCount() {
   var numberMatches = document.querySelector('.number-matches');
   numberMatches.innerHTML = deck.matchedCards.length / 2;
+  console.log(numberMatches);
 }
 
 function insertCards(event) {
@@ -141,4 +147,15 @@ function populateDeck() {
     cards.push(new Card(image[i], (i + 1)));
   }
   return cards;
+}
+
+function congratulationScreen() {
+  if (deck.matchedCards.length / 2 >= 5) {
+    gameScreen.children[1].insertAdjacentHTML('beforeend',
+    `
+    <div class="game-complete">
+    <p>Congratulations!</p>
+    </div>
+    `, 1500)
+  }
 }
