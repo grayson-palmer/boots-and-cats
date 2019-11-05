@@ -3,6 +3,7 @@ var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
 var gameScreen = document.querySelector('.game-screen');
+var allCards = document.querySelectorAll('.card');
 var deck = null;
 
 playerInputScreen.addEventListener('click', inputHandler);
