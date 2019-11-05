@@ -71,6 +71,7 @@ function directionsHandler(event) {
 // }
 
 function flipCard() {
+  timerHandler();
   this.classList.toggle('flip-card');
   deck.cards[this.id - 1].changeHasFlipped();
   if (!flippedCard) {
@@ -157,7 +158,7 @@ function congratulationScreen() {
     <div class="game-complete">
     <p>You did it!</p>
     <p>Great Job ${player1Name.value}!</p>
-    <p>Time: ${timer}</p>
+    <p>Time: ${timeDisplay()}</p>
     </div>
     `, 1500)
   }
@@ -172,4 +173,10 @@ function timerIncrement() {
 
 function timerHandler() {
   var interval = setInterval(timerIncrement, 1000);
+}
+
+function timeDisplay() {
+  var min = Math.floor(timer / 60);
+  var sec = timer % 60;
+  return `${min}:${sec}`;
 }
