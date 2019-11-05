@@ -13,10 +13,12 @@ class Deck {
   checkSelectedCards() {
     if (this.selectedCards[0].image === this.selectedCards[1].image) {
       this.moveToMatched();
-      this.selectedCards = [];
       removeCards();
+      congratulationScreen();
+      this.selectedCards = [];
     } else {
       unflipCards();
+      this.selectedCards = [];
     }
   }
   
