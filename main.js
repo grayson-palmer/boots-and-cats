@@ -2,13 +2,14 @@ var playerInputScreen = document.querySelector('.player-input-screen');
 var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
-var gameScreen = document.querySelector('.game-screen');
+// var gameScreen = document.querySelector('.game-screen');
 var allCards = document.querySelectorAll('.card');
 var deck = null;
 
 playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler)
-gameScreen.addEventListener('click', gameHandler);
+// gameScreen.addEventListener('click', gameHandler);
+allCards.forEach(card => card.addEventListener('click', flipCard));
 
 // ********** INPUT SCREEN HANDLER AND FUNCTIONS ********** //
 
@@ -56,18 +57,18 @@ function directionsHandler(event) {
 
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
-function gameHandler(event) {
-  if (event.target.parentElement.classList.contains('card')){
-    flipCard(event);
-  }
-  if (deck.selectedCards.length > 1) {
-    if (deck.checkSelectedCards()) {
-      //Make cards disappear
-    }
-    setTimeout(flipCardsBack, 1500);
+// function gameHandler(event) {
+//   if (event.target.parentElement.classList.contains('card')){
+//     flipCard(event);
+//   }
+//   if (deck.selectedCards.length > 1) {
+//     if (deck.checkSelectedCards()) {
+//       //Make cards disappear
+//     }
+//     setTimeout(flipCardsBack, 1500);
     
-  }
-}
+//   }
+// }
 
 function flipCard(event) {
   var num = event.target.parentElement.id - 1
