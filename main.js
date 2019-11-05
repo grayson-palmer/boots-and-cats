@@ -160,7 +160,7 @@ function congratulationScreen() {
     <p>Time: ${timeDisplay()}</p>
     </div>
     `);
-    playerName.pushToRounds(timeDisplay());
+    playerName.setPlayerFinishTime(timeDisplay());
     console.log(playerName);
   }
 }
