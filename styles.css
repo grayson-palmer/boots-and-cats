@@ -190,7 +190,7 @@ main {
   border-bottom: 2px solid #FFF;
 }
 
-.number-rounds {
+.number-matches {
   font-size: 5em;
   font-weight: 800;
   padding: 0;
@@ -309,11 +309,31 @@ main {
 }
 
 .remove-card {
-  animation: rotate-out-center 0.6s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: rotate-out-center 0.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.game-complete {
+  font-size: 3.5em;
+  grid-column: 1 / span 7;
+  grid-row: 2;
+  text-align: center;
 }
 
 /* ********** HIDE CLASS ********** */
 
 .hide {
   display: none;
+}
+
+/* ********** ANIMATION KEY-FRAMES ********** */
+
+@keyframes rotate-out-center {
+  0% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
 }
