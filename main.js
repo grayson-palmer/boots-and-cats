@@ -73,15 +73,16 @@ function directionsHandler(event) {
 function flipCard() {
   timerHandler();
   this.classList.toggle('flip-card');
-  deck.cards[this.id - 1].changeHasFlipped();
   if (!flippedCard) {
     flippedCard = true;
     firstCard = this;
+    deck.cards[firstCard.id - 1].changeHasFlipped();
     deck.selectedCards.push(deck.cards[firstCard.id - 1]);
     return;
   } else {
     flippedCard = false;
     secondCard = this;
+    deck.cards[secondCard.id - 1].changeHasFlipped();
     deck.selectedCards.push(deck.cards[secondCard.id - 1]);
   }
   deck.checkSelectedCards();
@@ -91,7 +92,7 @@ function unflipCards() {
   setTimeout(function() {
     firstCard.classList.remove('flip-card');
     secondCard.classList.remove('flip-card');
-  }, 1000);
+  }, 800);
   deck.cards[firstCard.id - 1].changeHasFlipped();
   deck.cards[secondCard.id - 1].changeHasFlipped();
 }
@@ -107,9 +108,7 @@ function removeCards() {
   setTimeout(function() {
     firstCard.remove();
     secondCard.remove();
-  }, 1200);
-  // deck.cards[firstCard.id - 1].matched();
-  // deck.cards[secondCard.id - 1].matched();
+  }, 800);
 }
 
 function player1StatInsert(event) {
@@ -134,11 +133,10 @@ function updateMatchCount() {
 
 function insertCards(event) {
   deck = new Deck(populateDeck());
-  // console.log('after deck', deck.cards);
-  // deck.shuffle();
+  deck.shuffle();
   for (var i = 0; i < 10; i++) {
     event.target.parentElement.parentElement.parentElement.children[2].children['1'].insertAdjacentHTML('beforeend',
-    `<div class="card card${i + 1}" id="${deck.cards[i].cardNum}">
+    `<div class="card card${i + 1}" id="${i + 1}">
     <img class="card-face" src=${deck.cards[i].image}>
       <img class="card-back" src="./assets/card-back.svg" alt="card back">
       </div>`)
