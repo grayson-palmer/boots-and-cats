@@ -7,13 +7,13 @@ class Player {
   addRoundCount() {
     this.roundCount++;
   }
-  pushToRounds(time) {
+  setPlayerFinishTime(time) {
     this.addRoundCount();
     this.time = time;
   }
   saveToStorage() {
     var previousBoard = JSON.parse(localStorage.getItem('leaderBoard')) || [];
-    var storePlayer = JSON.stringify({'name': this.name, 'time': timeDisplay()});
+    var storePlayer = JSON.stringify({'name': this.name, 'time': this.time});
     previousBoard.push(storePlayer);
     localStorage.setItem('leaderBoard', previousBoard);
   }
