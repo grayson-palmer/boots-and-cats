@@ -8,6 +8,7 @@ var deck = null;
 var firstCard = null;
 var secondCard = null;
 var flippedCard = false;
+var playerName = null;
 var timer = 0;
 
 playerInputScreen.addEventListener('click', inputHandler);
@@ -28,6 +29,7 @@ function inputHandler(event) {
 
 function inputNotBlank() {
   if (player1Name.value) {
+    playerName = new Player(player1Name.value);
     return true;
   } else {
     player1NameError.removeAttribute('hidden');
@@ -40,7 +42,7 @@ function inputNotBlank() {
 function directionsInfo() {
   directionsScreen.insertAdjacentHTML('beforeend', 
 `<div class="directions-container">
-  <h2>Welcome ${player1Name.value}!</h2>
+  <h2>Welcome ${playerName.name}!</h2>
   <p>The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
   <p>To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of Beyoncé. Click another card. If they match, they will disappear and you will have completed a match! If they don’t, you’ll have three seconds to look at them before they flip back over. Then it’s time for the other player to try!</p>
   <p>After you play, you’ll see the name of the final winner and how long it took to win the game.</p>
@@ -114,7 +116,7 @@ function removeCards() {
 function player1StatInsert(event) {
   event.target.parentElement.parentElement.parentElement.children[2].children['0'].insertAdjacentHTML('beforeend',
   `<div class="player-1-display">
-    <h3>${player1Name.value}</h3>
+    <h3>${playerName.name}</h3>
     <p hidden>Top Player #</p>
   </div>
   <div class="matches-this-round">
