@@ -154,7 +154,8 @@ function congratulationScreen() {
     gameScreen.children[1].insertAdjacentHTML('beforeend',
     `
     <div class="game-complete">
-    <p>Congratulations!</p>
+    <p>You did it!</p>
+    <p>Great Job ${player1Name.value}!</p>
     </div>
     `, 1500)
   }
