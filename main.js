@@ -3,11 +3,15 @@ var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
 var gameScreen = document.querySelector('.game-screen');
+var allCards = null;
 var deck = null;
+var firstCard = null;
+var secondCard = null;
+var flippedCard = false;
 
 playerInputScreen.addEventListener('click', inputHandler);
-directionsScreen.addEventListener('click', directionsHandler)
-gameScreen.addEventListener('click', gameHandler);
+directionsScreen.addEventListener('click', directionsHandler);
+// gameScreen.addEventListener('click', gameHandler);
 
 // ********** INPUT SCREEN HANDLER AND FUNCTIONS ********** //
 
@@ -55,37 +59,40 @@ function directionsHandler(event) {
 
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
-function gameHandler(event) {
-  if (event.target.parentElement.classList.contains('card')){
-    flipCard(event);
-  }
-  if (deck.selectedCards.length > 1) {
-    if (deck.checkSelectedCards()) {
-      //Make cards disappear
-    }
-    setTimeout(flipCardsBack, 1500);
+// function gameHandler(event) {
+//   if (deck.selectedCards.length > 1) {
+//     if (deck.checkSelectedCards()) {
+//       //Make cards disappear
+//       console.log(event.target.parentElement)
+//       console.log(event);
+//     }
+//     setTimeout(flipCardsBack, 1500);
     
+//   }
+// }
+
+function flipCard() {
+  this.classList.toggle('flip-card');
+  deck.cards[this.id - 1].changeHasFlipped();
+  if (!flippedCard) {
+    flippedCard = true;
+    firstCard = this;
+    deck.selectedCards.push(deck.cards[firstCard.id - 1]);
+    return;
+  } else {
+    flippedCard = false;
+    secondCard = this;
+    deck.selectedCards.push(this); 
+    deck.selectedCards.push(deck.cards[secondCard.id - 1]);
   }
+  deck.checkSelectedCards();
 }
 
-function flipCard(event) {
-  var num = event.target.parentElement.id - 1
-  deck.cards[num].changeHasFlipped(event);
-}
-
-function flipCardsBack() {
-  var card1 = null;
-  var card2 = null;
-  var num1 = deck.selectedCards[0].cardNum;
-  var num2 = deck.selectedCards[1].cardNum;
-  console.log(deck.selectedCards);
-  card1 = document.querySelector(`.card${num}`);
-  card2 = document.querySelector(`.card${num}`);
-  // card1.classList.remove('flip-card');
-  // card2.classList.remove('flip-card');
-  changeHasFlipped(num1);
-  changeHasFlipped(num2);
-  this.selectedCards = [];
+function unflipCards() {
+  setTimeout(function() {
+      firstCard.classList.remove('flip-card');
+      secondCard.classList.remove('flip-card');
+    }, 1500);
 }
 
 function player1StatInsert(event) {
@@ -112,6 +119,8 @@ function insertCards(event) {
       <img class="card-back" src="./assets/card-back.svg" alt="card back">
     </div>`)
   }
+  allCards = gameScreen.querySelectorAll('.card');
+  allCards.forEach(card => card.addEventListener('click', flipCard));
 }
 
 function populateDeck() {

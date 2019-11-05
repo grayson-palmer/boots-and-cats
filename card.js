@@ -5,10 +5,8 @@ class Card {
     this.matched = false;
     this.hasFlipped = false;
   }
-  changeHasFlipped(event) {
-    event.target.parentElement.classList.toggle('flip-card');
+  changeHasFlipped() {
     this.hasFlipped = !this.hasFlipped;
-    deck.selectedCards.push(this);
   }
   matched() {
     this.matched = true;
