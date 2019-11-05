@@ -9,6 +9,7 @@ var firstCard = null;
 var secondCard = null;
 var flippedCard = false;
 var playerName = null;
+var interval = null;
 var timer = 0;
 
 playerInputScreen.addEventListener('click', inputHandler);
@@ -99,13 +100,6 @@ function unflipCards() {
   deck.cards[secondCard.id - 1].changeHasFlipped();
 }
 
-// function removeAnimation() {
-//   setTimeout(function() {
-//     firstCard.classList.add('remove-card');
-//     secondCard.classList.add('remove-card');
-//   }, 1000);
-// }
-
 function removeCards() {
   setTimeout(function() {
     firstCard.remove();
@@ -166,18 +160,22 @@ function congratulationScreen() {
     <p>Time: ${timeDisplay()}</p>
     </div>
     `);
+    playerName.pushToRounds(timeDisplay());
+    console.log(playerName);
   }
 }
 
 function timerIncrement() {
-  timer++
-  if (deck.matchedCards.length / 2 >= 5){
-    clearInterval(interval)
+  var hasStarted = 0
+  hasStarted++
+  if (hasStarted === 1) {
+    timer++
   }
 }
 
 function timerHandler() {
-  var interval = setInterval(timerIncrement, 1000);
+  clearInterval(interval)
+  interval = setInterval(timerIncrement, 1000);
 }
 
 function timeDisplay() {
