@@ -8,6 +8,7 @@ var deck = null;
 var firstCard = null;
 var secondCard = null;
 var flippedCard = false;
+var timer = 0;
 
 playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler);
@@ -156,7 +157,19 @@ function congratulationScreen() {
     <div class="game-complete">
     <p>You did it!</p>
     <p>Great Job ${player1Name.value}!</p>
+    <p>Time: ${timer}</p>
     </div>
     `, 1500)
   }
+}
+
+function timerIncrement() {
+  timer++
+  if (deck.matchedCards.length / 2 >= 5){
+    clearInterval(interval)
+  }
+}
+
+function timerHandler() {
+  var interval = setInterval(timerIncrement, 1000);
 }
