@@ -11,7 +11,7 @@ var flippedCard = false;
 
 playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler);
-gameScreen.addEventListener('click', gameHandler);
+// gameScreen.addEventListener('click', gameHandler);
 
 // ********** INPUT SCREEN HANDLER AND FUNCTIONS ********** //
 
@@ -59,17 +59,17 @@ function directionsHandler(event) {
 
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
-function gameHandler(event) {
-  if (deck.selectedCards.length > 1) {
-    if (deck.checkSelectedCards()) {
-      //Make cards disappear
-      console.log(event.target.parentElement)
-      console.log(event);
-    }
-    setTimeout(flipCardsBack, 1500);
+// function gameHandler(event) {
+//   if (deck.selectedCards.length > 1) {
+//     if (deck.checkSelectedCards()) {
+//       //Make cards disappear
+//       console.log(event.target.parentElement)
+//       console.log(event);
+//     }
+//     setTimeout(flipCardsBack, 1500);
     
-  }
-}
+//   }
+// }
 
 function flipCard() {
   this.classList.toggle('flip-card');
@@ -77,18 +77,19 @@ function flipCard() {
   if (!flippedCard) {
     flippedCard = true;
     firstCard = this;
-    deck.selectedCards.push(this);
+    deck.selectedCards.push(deck.cards[firstCard.id - 1]);
     return;
   } else {
     flippedCard = false;
     secondCard = this;
     deck.selectedCards.push(this); 
+    deck.selectedCards.push(deck.cards[secondCard.id - 1]);
   }
   deck.checkSelectedCards();
 }
 
 function unflipCards() {
-  setTimeout(() => {
+  setTimeout(function() {
       firstCard.classList.remove('flip-card');
       secondCard.classList.remove('flip-card');
     }, 1500);
