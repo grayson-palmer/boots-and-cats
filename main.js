@@ -2,14 +2,14 @@ var playerInputScreen = document.querySelector('.player-input-screen');
 var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
-// var gameScreen = document.querySelector('.game-screen');
-var allCards = document.querySelectorAll('.card');
+var gameScreen = document.querySelector('.game-screen');
+var allCards = null;
 var deck = null;
 
 playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler)
 // gameScreen.addEventListener('click', gameHandler);
-allCards.forEach(card => card.addEventListener('click', flipCard));
+// allCards.forEach(cardEvent => cardEvent.addEventListener('click', flipCard));
 
 // ********** INPUT SCREEN HANDLER AND FUNCTIONS ********** //
 
@@ -70,9 +70,10 @@ function directionsHandler(event) {
 //   }
 // }
 
-function flipCard(event) {
-  var num = event.target.parentElement.id - 1
-  deck.cards[num].changeHasFlipped(event);
+function flipCard() {
+  this.classList.toggle('flip-card');
+  console.log(this);
+  // deck.cards[this.target.].changeHasFlipped();
 }
 
 function flipCardsBack() {
@@ -114,6 +115,8 @@ function insertCards(event) {
       <img class="card-back" src="./assets/card-back.svg" alt="card back">
     </div>`)
   }
+  allCards = gameScreen.querySelectorAll('.card');
+  allCards.forEach(card => card.addEventListener('click', flipCard));
 }
 
 function populateDeck() {
