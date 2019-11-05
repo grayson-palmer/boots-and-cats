@@ -6,7 +6,7 @@ class Card {
     this.hasFlipped = false;
   }
   changeHasFlipped(event) {
-    event.path[1].classList.toggle('flip-card');
+    event.target.parentElement.classList.toggle('flip-card');
     this.hasFlipped = !this.hasFlipped;
     deck.selectedCards.push(this);
   }
