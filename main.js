@@ -56,14 +56,14 @@ function directionsHandler(event) {
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
 function gameHandler(event) {
-  console.log(event);
   if (event.target.parentElement.classList.contains('card')){
     flipCard(event);
   }
   if (deck.selectedCards.length > 1) {
-    deck.checkSelectedCards();
+    if (deck.checkSelectedCards()) {
+      //Make cards disappear
+    }
     setTimeout(flipCardsBack, 1500);
-    // console.log(deck.selectedCards[0]);
     
   }
 }
@@ -74,12 +74,17 @@ function flipCard(event) {
 }
 
 function flipCardsBack() {
-  debugger;
+  var card1 = null;
+  var card2 = null;
+  var num1 = deck.selectedCards[0].cardNum;
+  var num2 = deck.selectedCards[1].cardNum;
   console.log(deck.selectedCards);
-  var card1 = document.querySelector(`.card${deck.selectedCards[0].cardNum}`);
-  var card2 = document.querySelector(`.card${deck.selectedCards[1].cardNum}`);
-  card1.classList.toggle('flip-card');
-  card2.classList.toggle('flip-card');
+  card1 = document.querySelector(`.card${num}`);
+  card2 = document.querySelector(`.card${num}`);
+  // card1.classList.remove('flip-card');
+  // card2.classList.remove('flip-card');
+  changeHasFlipped(num1);
+  changeHasFlipped(num2);
   this.selectedCards = [];
 }
 
@@ -102,8 +107,8 @@ function insertCards(event) {
   deck = new Deck(populateDeck());
   for (var i = 0; i < 10; i++) {
     event.target.parentElement.parentElement.parentElement.children[2].children['1'].insertAdjacentHTML('beforeend',
-    `<div class="card card${deck.cards[i].cardNum}" id="${deck.cards[i].cardNum}" data-name="${deck.cards[i].name}">
-      <img class="card-face" src=${deck.cards[i].image} alt="2 black boots">
+    `<div class="card card${deck.cards[i].cardNum}" id="${deck.cards[i].cardNum}">
+      <img class="card-face" src=${deck.cards[i].image}>
       <img class="card-back" src="./assets/card-back.svg" alt="card back">
     </div>`)
   }
@@ -111,10 +116,9 @@ function insertCards(event) {
 
 function populateDeck() {
   var cards = [];
-  var image = ['./assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg'];
-  for (var i = 0; i < 5; i++) {
+  var image = ['./assets/boot-1.jpg', './assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg', './assets/cat-2.jpg'];
+  for (var i = 0; i < 10; i++) {
     cards.push(new Card(image[i], (i + 1)));
-    cards.push(new Card(image[i], (i + 6)));
   }
   return cards;
 }
