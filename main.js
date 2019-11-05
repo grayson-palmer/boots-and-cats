@@ -82,7 +82,6 @@ function flipCard() {
   } else {
     flippedCard = false;
     secondCard = this;
-    deck.selectedCards.push(this); 
     deck.selectedCards.push(deck.cards[secondCard.id - 1]);
   }
   deck.checkSelectedCards();
@@ -92,7 +91,14 @@ function unflipCards() {
   setTimeout(function() {
       firstCard.classList.remove('flip-card');
       secondCard.classList.remove('flip-card');
-    }, 1500);
+    }, 1000);
+}
+
+function removeCards() {
+  firstCard.classList.add(remove-card);
+  secondCard.classList.add(remove-card);
+  firstCard.remove();
+  secondCard.remove();
 }
 
 function player1StatInsert(event) {
@@ -103,11 +109,16 @@ function player1StatInsert(event) {
   </div>
   <div class="matches-this-round">
     <p>Matches this round</p>
-    <p class="number-rounds">5</p>
+    <p class="number-matches">0</p>
   </div>
   <div>
   <p>Game Wins</p>
   </div>`);
+}
+
+function updateMatchCount() {
+  var numberMatches = document.querySelector('.number-matches');
+  numberMatches.innerHTML = deck.matchedCards.length / 2;
 }
 
 function insertCards(event) {
@@ -126,7 +137,7 @@ function insertCards(event) {
 function populateDeck() {
   var cards = [];
   var image = ['./assets/boot-1.jpg', './assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg', './assets/cat-2.jpg'];
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < image.length; i++) {
     cards.push(new Card(image[i], (i + 1)));
   }
   return cards;
