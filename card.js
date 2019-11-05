@@ -1,12 +1,14 @@
 class Card {
-  constructor(name, image) {
-    this.name = name;
+  constructor(image, cardNum) {
     this.image = image;
+    this.cardNum = cardNum
     this.matched = false;
     this.hasFlipped = false;
   }
-  hasFlipped() {
+  changeHasFlipped(event) {
+    event.target.parentElement.classList.toggle('flip-card');
     this.hasFlipped = !this.hasFlipped;
+    deck.selectedCards.push(this);
   }
   matched() {
     this.matched = true;

@@ -3,7 +3,6 @@ var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
 var gameScreen = document.querySelector('.game-screen');
-var cards = [];
 var deck = null;
 
 playerInputScreen.addEventListener('click', inputHandler);
@@ -48,7 +47,7 @@ function directionsHandler(event) {
   if (event.target.classList.contains('play-game-button')) {
     directionsScreen.classList.toggle('hide');
     gameScreen.classList.toggle('hide');
-    event.path[4].classList.toggle('background-color');
+    event.target.parentElement.parentElement.parentElement.parentElement.classList.toggle('background-color');
     player1StatInsert(event);
     insertCards(event);
   }
@@ -57,21 +56,40 @@ function directionsHandler(event) {
 // ********** GAME SCREEN HANDLER AND FUNCTIONS ********** //
 
 function gameHandler(event) {
-  if (event.path[1].classList.contains('card')){
+  if (event.target.parentElement.classList.contains('card')){
     flipCard(event);
+  }
+  if (deck.selectedCards.length > 1) {
+    if (deck.checkSelectedCards()) {
+      //Make cards disappear
+    }
+    setTimeout(flipCardsBack, 1500);
+    
   }
 }
 
 function flipCard(event) {
-  event.path[1].classList.toggle('flip-card');
-  var num = event.path[1].id - 1
-  console.log(cards[num].hasFlipped());
-  // cards[num].hasFlipped();
-  // console.log(deck.cards[event.path[1].id - 1]);
+  var num = event.target.parentElement.id - 1
+  deck.cards[num].changeHasFlipped(event);
+}
+
+function flipCardsBack() {
+  var card1 = null;
+  var card2 = null;
+  var num1 = deck.selectedCards[0].cardNum;
+  var num2 = deck.selectedCards[1].cardNum;
+  console.log(deck.selectedCards);
+  card1 = document.querySelector(`.card${num}`);
+  card2 = document.querySelector(`.card${num}`);
+  // card1.classList.remove('flip-card');
+  // card2.classList.remove('flip-card');
+  changeHasFlipped(num1);
+  changeHasFlipped(num2);
+  this.selectedCards = [];
 }
 
 function player1StatInsert(event) {
-  event.path[3].children[2].children['0'].insertAdjacentHTML('beforeend',
+  event.target.parentElement.parentElement.parentElement.children[2].children['0'].insertAdjacentHTML('beforeend',
   `<div class="player-1-display">
     <h3>${player1Name.value}</h3>
     <p hidden>Top Player #</p>
@@ -87,20 +105,20 @@ function player1StatInsert(event) {
 
 function insertCards(event) {
   deck = new Deck(populateDeck());
-  for (var i = 0; i < 10; i++)
-  event.path[3].children[2].children['1'].insertAdjacentHTML('beforeend',
-  `<div class="card card${i + 1}" id="${i + 1}" data-name="${deck.cards[i].name}">
-    <img class="card-front" src=${deck.cards[i].image} alt="2 black boots">
-    <img class="card-back" src="./assets/card-back.svg" alt="card back">
-  </div>`)
+  for (var i = 0; i < 10; i++) {
+    event.target.parentElement.parentElement.parentElement.children[2].children['1'].insertAdjacentHTML('beforeend',
+    `<div class="card card${deck.cards[i].cardNum}" id="${deck.cards[i].cardNum}">
+      <img class="card-face" src=${deck.cards[i].image}>
+      <img class="card-back" src="./assets/card-back.svg" alt="card back">
+    </div>`)
+  }
 }
 
 function populateDeck() {
-  var name = ['boot-1', 'boot-2', 'boot-3', 'cat-1', 'cat-2'];
-  var image = ['./assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg'];
-  for (var i = 0; i < 5; i++) {
-    cards.push(new Card(name[i], image[i]));
-    cards.push(new Card(name[i], image[i]));
+  var cards = [];
+  var image = ['./assets/boot-1.jpg', './assets/boot-1.jpg', './assets/boot-2.jpg', './assets/boot-2.jpg', './assets/boot-3.jpg', './assets/boot-3.jpg', './assets/cat-1.jpg', './assets/cat-1.jpg', './assets/cat-2.jpg', './assets/cat-2.jpg'];
+  for (var i = 0; i < 10; i++) {
+    cards.push(new Card(image[i], (i + 1)));
   }
   return cards;
 }
