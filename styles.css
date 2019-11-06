@@ -32,6 +32,12 @@ header {
   width: 5.5em;
 }
 
+.leader-board {
+  background-color: #ff0000;
+  width: 250px;
+  height: 70vh;
+}
+
 header h1 {
   align-self: center;
   margin: auto;
