@@ -36,6 +36,7 @@ header {
   background-color: #ff0000;
   width: 250px;
   height: 70vh;
+  position: absolute;
 }
 
 header h1 {
