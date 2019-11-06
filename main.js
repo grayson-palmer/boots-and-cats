@@ -196,6 +196,6 @@ function retrieveLeaderBoard() {
   }
 }
 
-function leaderBoardHandler() {
-  
+function leaderBoardHandler(event) {
+  event.target.nextElementSibling.classList.toggle('hide');
 }
