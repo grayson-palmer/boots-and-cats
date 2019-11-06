@@ -3,7 +3,7 @@ var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
 var gameScreen = document.querySelector('.game-screen');
-var leaderBoardDropdown = document.querySelector('.nav-icon');
+var leaderBoardDropdown = document.querySelector('nav');
 var allCards = null;
 var deck = null;
 var firstCard = null;
@@ -13,6 +13,7 @@ var playerName = null;
 var interval = null;
 var timer = 0;
 
+window.onload = displayLeaderBoard();
 playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler);
 leaderBoardDropdown.addEventListener('click', leaderBoardHandler);
@@ -193,6 +194,20 @@ function retrieveLeaderBoard() {
     return parsedLeaderBoard;
   } else {
     return [];
+  }
+}
+
+function displayLeaderBoard() {
+  var parsedLeaderBoard = retrieveLeaderBoard();
+  var leaderBoardLocation = leaderBoardDropdown.children[1];
+  console.log(leaderBoardLocation);
+  for (var i = 0; i < parsedLeaderBoard.length; i++) {
+    leaderBoardLocation.insertAdjacentHTML('beforeend', 
+    `
+    <div class="leader-board${i}">
+      <p>#${i + 1}. ${parsedLeaderBoard[i].name} - ${parsedLeaderBoard[i].time}</p>
+    </div>
+    `)
   }
 }
 
