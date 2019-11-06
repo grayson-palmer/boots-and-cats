@@ -3,6 +3,7 @@ var player1NameError = document.querySelector('.player-1-name-error');
 var player1Name = document.querySelector('#player-1-name');
 var directionsScreen = document.querySelector('.directions-screen');
 var gameScreen = document.querySelector('.game-screen');
+var leaderBoardDropdown = document.querySelector('nav');
 var allCards = null;
 var deck = null;
 var firstCard = null;
@@ -12,8 +13,10 @@ var playerName = null;
 var interval = null;
 var timer = 0;
 
+window.onload = displayLeaderBoard();
 playerInputScreen.addEventListener('click', inputHandler);
 directionsScreen.addEventListener('click', directionsHandler);
+leaderBoardDropdown.addEventListener('click', leaderBoardHandler);
 // gameScreen.addEventListener('click', gameHandler);
 
 // ********** INPUT SCREEN HANDLER AND FUNCTIONS ********** //
@@ -194,3 +197,30 @@ function retrieveLeaderBoard() {
   }
 }
 
+function displayLeaderBoard() {
+  var parsedLeaderBoard = retrieveLeaderBoard();
+  var leaderBoardLocation = leaderBoardDropdown.children[1];
+  parsedLeaderBoard = parsedLeaderBoard.sort(sortLeaderBoard);
+  for (var i = 0; i < parsedLeaderBoard.length; i++) {
+    leaderBoardLocation.insertAdjacentHTML('beforeend', 
+    `
+    <div class="leader-board${i}">
+      <p>#${i + 1}. ${parsedLeaderBoard[i].name} - ${parsedLeaderBoard[i].time}</p>
+    </div>
+    `)
+  }
+}
+
+function sortLeaderBoard(a, b) {
+  if (a.time > b.time) {
+    return 1;;
+  } else if (b.time > a.time) {
+    return -1;;
+  } else {
+    return 0;
+  }
+}
+
+function leaderBoardHandler(event) {
+  event.target.nextElementSibling.classList.toggle('hide');
+}
