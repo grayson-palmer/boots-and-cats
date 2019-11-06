@@ -3,7 +3,6 @@ class Deck {
     this.cards = cards;
     this.matchedCards = [];
     this.selectedCards = [];
-    // this.matches = [];
   }
   
   shuffle() {
@@ -11,7 +10,6 @@ class Deck {
   }
   
   checkSelectedCards() {
-    console.log(this.selectedCards);
     if (this.selectedCards[0].image === this.selectedCards[1].image && this.selectedCards.length < 3) {
       this.moveToMatched();
       removeCards();
