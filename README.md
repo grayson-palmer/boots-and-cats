@@ -23,6 +23,24 @@
 - DEV Tools (including debugger)
 - Terminal
 
+# Future Iterations
+- Will allow 2 player mode
+- Will allow selection to play a new round without refreshing
+- Select an amount of match cards
+- Pause game function that stops the timer
+
+# Comp Comparison
+
+-Comp:
+<img width="1105" alt="Screen Shot 2019-11-05 at 9 55 01 PM" src="https://user-images.githubusercontent.com/46653114/68269413-f51fbd80-0016-11ea-80f3-b33aedf27ed6.png">
+
+<img width="1105" alt="Screen Shot 2019-11-05 at 9 56 04 PM" src="https://user-images.githubusercontent.com/46653114/68269441-141e4f80-0017-11ea-855e-e7623069b929.png">
+
+-My Version:
+<img width="1440" alt="Screen Shot 2019-11-05 at 9 49 19 PM" src="https://user-images.githubusercontent.com/46653114/68269360-cdc8f080-0016-11ea-826f-cfe7a9d30d59.png">
+
+<img width="1440" alt="Screen Shot 2019-11-05 at 9 56 52 PM" src="https://user-images.githubusercontent.com/46653114/68269477-31531e00-0017-11ea-987e-9633ae36cd1c.png">
+
 # Challenges
 
 A large challenge for me was getting the card animations and interactions functioning correctly. There were a lot of issues with how I targeted the cards. I also had a hard time getting my cards styled correctly on the grid. Manipulation between the object classes was also a problem for a while.
