@@ -15,9 +15,7 @@ class Player {
   updateLeaderBoard() {
     var storageLeaderBoard = retrieveLeaderBoard();
     var fromPlayer = {'name': this.name, 'time': this.time};
-    // fromPlayer = JSON.stringify(fromPlayer);
     storageLeaderBoard.push(fromPlayer);
-    // storageLeaderBoard = ;
     localStorage.setItem('leaderBoard', JSON.stringify(storageLeaderBoard));
   }
 }
