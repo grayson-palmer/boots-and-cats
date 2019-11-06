@@ -200,7 +200,7 @@ function retrieveLeaderBoard() {
 function displayLeaderBoard() {
   var parsedLeaderBoard = retrieveLeaderBoard();
   var leaderBoardLocation = leaderBoardDropdown.children[1];
-  console.log(leaderBoardLocation);
+  parsedLeaderBoard = parsedLeaderBoard.sort(sortLeaderBoard);
   for (var i = 0; i < parsedLeaderBoard.length; i++) {
     leaderBoardLocation.insertAdjacentHTML('beforeend', 
     `
@@ -208,6 +208,16 @@ function displayLeaderBoard() {
       <p>#${i + 1}. ${parsedLeaderBoard[i].name} - ${parsedLeaderBoard[i].time}</p>
     </div>
     `)
+  }
+}
+
+function sortLeaderBoard(a, b) {
+  if (a.time > b.time) {
+    return 1;;
+  } else if (b.time > a.time) {
+    return -1;;
+  } else {
+    return 0;
   }
 }
 
