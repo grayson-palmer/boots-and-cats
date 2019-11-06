@@ -11,10 +11,13 @@ class Player {
     this.addRoundCount();
     this.time = time;
   }
-  saveToStorage() {
-    var previousBoard = JSON.parse(localStorage.getItem('leaderBoard')) || [];
-    var storePlayer = JSON.stringify({'name': this.name, 'time': this.time});
-    previousBoard.push(storePlayer);
-    localStorage.setItem('leaderBoard', previousBoard);
+
+  updateLeaderBoard() {
+    var storageLeaderBoard = retrieveLeaderBoard();
+    var fromPlayer = {'name': this.name, 'time': this.time};
+    // fromPlayer = JSON.stringify(fromPlayer);
+    storageLeaderBoard.push(fromPlayer);
+    // storageLeaderBoard = ;
+    localStorage.setItem('leaderBoard', JSON.stringify(storageLeaderBoard));
   }
 }
