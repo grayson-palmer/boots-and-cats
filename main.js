@@ -161,7 +161,7 @@ function congratulationScreen() {
     </div>
     `);
     playerName.setPlayerFinishTime(timeDisplay());
-    console.log(playerName);
+    playerName.updateLeaderBoard();
   }
 }
 
@@ -179,7 +179,18 @@ function timerHandler() {
 }
 
 function timeDisplay() {
-  var min = Math.floor(timer / 60);
-  var sec = timer % 60;
+  var min = Math.floor(timer / 60) < 10 ? '0' + Math.floor(timer / 60) : Math.floor(timer / 60);
+  var sec = timer % 60 < 10 ? '0' + timer % 60 : timer % 60;
   return `${min}:${sec}`;
 }
+
+function retrieveLeaderBoard() {
+  if (localStorage['leaderBoard']) {
+    var getLeaderBoard = localStorage.getItem('leaderBoard');
+    var parsedLeaderBoard = JSON.parse(getLeaderBoard);
+    return parsedLeaderBoard;
+  } else {
+    return [];
+  }
+}
+
